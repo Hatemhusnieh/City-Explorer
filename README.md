@@ -1,6 +1,6 @@
 # City Explorer
 
-**Author**: Hatem Husnieh
+**Author**: Hatem Ghazi Husnieh
 **Version**: 1.0.0
 
 ## Overview
