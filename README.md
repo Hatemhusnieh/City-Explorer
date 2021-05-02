@@ -1,21 +1,43 @@
 # City Explorer
 
-**Author**: Hatem Husnieh
+**Author**: Hatem Ghazi Husnieh
 **Version**: 1.0.0
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+This is an application that uses an `API` to display a location of users choice.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+1. install a React template
+1. build the structure of the app
+1. find an API and get a key
+1. import `axios` into your react app
+1. identify the parts in the API URL that need to be changed in the `GET API link` to be useful
+1. create functions to change the API parts.
+1. render your app
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+- react library
+- axios library
+- react.bootstrap library
+- CSS
+- JavaScript
+- HTML
+- JSON 
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
+02.05.2021 12:00am - pplication now has a fully-functional express server, with a GET route for the location resource.
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+- **ASAC** team
+- [LocationIQ](https://locationiq.com/)
+
+Name of feature: **Asynchronous code, and APIs**
+
+Estimate of time needed to complete: 4 hours
+
+Start time: 9:00 pm
+
+Finish time: 12:00 am
+
+Actual time needed to complete: 3 hours
