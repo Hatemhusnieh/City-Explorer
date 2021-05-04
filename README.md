@@ -1,10 +1,10 @@
 # City Explorer
 
 **Author**: Hatem Ghazi Husnieh
-**Version**: 1.0.0
+**Version**: 1.1.0
 
 ## Overview
-This is an application that uses an `API` to display a location of users choice.
+This is an application that uses an `API` to display a location of users choice along with temperature for 20 days
 
 ## Getting Started
 1. install a React template
@@ -14,6 +14,8 @@ This is an application that uses an `API` to display a location of users choice.
 1. identify the parts in the API URL that need to be changed in the `GET API link` to be useful
 1. create functions to change the API parts.
 1. render your app
+1. connect thr front end to NETLIFY.com
+1. connect the Back-End to HEROKU.com
 
 ## Architecture
 - react library
@@ -28,7 +30,10 @@ This is an application that uses an `API` to display a location of users choice.
 
 ## Change Log
 - 02.05.2021 12:00am - application now has a fully-functional express server, with a GET route for the location resource.  
-![response cycle](./pics/responce-cycle.png)
+
+- 04.5.2021 10:00 pm - the application is now able to preview errors and forecasts for 20 days   
+![response cycle](./pics/responce-cycle.png)  
+
 
 
 ## Credit and Collaborations
@@ -48,7 +53,7 @@ Finish time: 12:00 am
 Actual time needed to complete: 3 hours  
 
 
-Name of feature: Custom Servers with Node and Expres_
+Name of feature: **Custom Servers with Node and Express**
 
 Estimate of time needed to complete: 5 hours
 
