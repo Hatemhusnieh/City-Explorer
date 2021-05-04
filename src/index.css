@@ -47,4 +47,13 @@ header h1{
   margin-left: 10%;
 }
 
+.info-card{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 10px 0px;
+}
+.card {
+  margin: 10px;
+}
 /* /////////////////////////////////// */
