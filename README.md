@@ -23,14 +23,19 @@ This is an application that uses an `API` to display a location of users choice.
 - JavaScript
 - HTML
 - JSON 
+- Express.js
+- Node.js
 
 ## Change Log
-02.05.2021 12:00am - pplication now has a fully-functional express server, with a GET route for the location resource.
+- 02.05.2021 12:00am - application now has a fully-functional express server, with a GET route for the location resource.  
+![response cycle](./pics/responce-cycle.png)
 
 
 ## Credit and Collaborations
 - **ASAC** team
 - [LocationIQ](https://locationiq.com/)
+- [Qusay Al-Amarat](https://github.com/Qusay114)
+
 
 Name of feature: **Asynchronous code, and APIs**
 
@@ -40,4 +45,15 @@ Start time: 9:00 pm
 
 Finish time: 12:00 am
 
-Actual time needed to complete: 3 hours
+Actual time needed to complete: 3 hours  
+
+
+Name of feature: Custom Servers with Node and Expres_
+
+Estimate of time needed to complete: 5 hours
+
+Start time: 3:00pm
+
+Finish time: 9:00pm hours
+
+Actual time needed to complete: 6 hours
