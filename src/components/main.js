@@ -39,10 +39,10 @@ class Main extends React.Component {
         isError : false,
         errorType : 0
       });
-      console.log(this.state.locationName);
+      // console.log(this.state.locationName);
     }catch(error){
       console.clear();
-      console.log(error.message);
+      // console.log(error.message);
       if(this.state.locationName){
         this.setState({
           isError : true,
