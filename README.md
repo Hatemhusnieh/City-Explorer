@@ -1,10 +1,10 @@
 # City Explorer
 
 **Author**: Hatem Ghazi Husnieh
-**Version**: 1.1.0
+**Version**: 1.2.0
 
 ## Overview
-This is an application that uses an `API` to display a location of users choice. and shows the forecast of the location for 20 days. However, the forecast is static.
+This is an application that uses an `API` to display a location of users choice. and shows the forecast of the location for the next 20 days. Also, now it has the ability to offer a collection od movies related to the city that been explored.
 
 ## Getting Started
 1. install a React template
@@ -27,6 +27,9 @@ This is an application that uses an `API` to display a location of users choice.
 - JSON 
 - Express.js
 - Node.js
+- LocationIQ API
+- Weather-BIT API
+- TheMovie-DB API
 
 ## Change Log
 - 02.05.2021 12:00am - application now has a fully-functional express server, with a GET route for the location resource. 
@@ -34,11 +37,15 @@ This is an application that uses an `API` to display a location of users choice.
 - 04.05.2021 10:00pm - application now preview a static forecast for 20 days
 ![response cycle](./pics/responce-cycle.png)
 
+- 05.05.2021 11:30pm - application can preview future forecasts along with collection of movies related to location.
+![response cycle](./pics/responce-cycle-2.png)
+
 
 ## Credit and Collaborations
 - **ASAC** team
 - [LocationIQ](https://locationiq.com/)
 - [Qusay Al-Amarat](https://github.com/Qusay114)
+- [Mohammad Khaled Jaradat](https://github.com/muhmadJaradat)
 
 
 Name of feature: **Asynchronous code, and APIs**
@@ -61,3 +68,13 @@ Start time: 3:00pm
 Finish time: 9:00pm hours
 
 Actual time needed to complete: 6 hours
+
+Name of feature: **APIs (Weather & Movies)**
+
+Estimate of time needed to complete: 4 hours
+
+Start time: 4:00pm
+
+Finish time: 12:00pm hours
+
+Actual time needed to complete: 4 hours
