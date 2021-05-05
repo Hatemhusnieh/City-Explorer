@@ -4,7 +4,7 @@
 **Version**: 1.1.0
 
 ## Overview
-This is an application that uses an `API` to display a location of users choice along with temperature for 20 days
+This is an application that uses an `API` to display a location of users choice. and shows the forecast of the location for 20 days. However, the forecast is static.
 
 ## Getting Started
 1. install a React template
@@ -29,11 +29,10 @@ This is an application that uses an `API` to display a location of users choice 
 - Node.js
 
 ## Change Log
-- 02.05.2021 12:00am - application now has a fully-functional express server, with a GET route for the location resource.  
+- 02.05.2021 12:00am - application now has a fully-functional express server, with a GET route for the location resource. 
 
-- 04.5.2021 10:00 pm - the application is now able to preview errors and forecasts for 20 days   
-![response cycle](./pics/responce-cycle.png)  
-
+- 04.05.2021 10:00pm - application now preview a static forecast for 20 days
+![response cycle](./pics/responce-cycle.png)
 
 
 ## Credit and Collaborations
