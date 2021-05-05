@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Map from './map';
 import Forecast from './Forecast';
 import Errors from './Errors';
+import Movies from './Movies';
+
 
 class Main extends React.Component {
 
@@ -15,7 +17,8 @@ class Main extends React.Component {
     this.state = {
       data : '',
       locationName : '',
-      apiData : '',
+      weatherData : '',
+      moviesData : '',
       display : false,
       isError : false,
       errorType: 0,
@@ -24,10 +27,10 @@ class Main extends React.Component {
     };
   }
 
-  getLocation = async (e) => {
+  getLocation = async (e) =>{
     e.preventDefault();
     try {
-      const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_API}&q=${this.state.locationName}&format=json`;
+      const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.locationName}&format=json`;
       const req = await axios.get(url);
 
       this.setState({
@@ -35,6 +38,7 @@ class Main extends React.Component {
       });
       // console.log(this.state.locationName);
       this.getForecast();
+      this.getMovies();
     }catch(error){
       console.clear();
       // console.log(error.message);
@@ -47,7 +51,7 @@ class Main extends React.Component {
           display : false,
           data : '',
           locationName : '',
-          apiData : ''
+          weatherData : ''
         });
       }else{
         this.setState({
@@ -58,25 +62,35 @@ class Main extends React.Component {
           display : false,
           data : '',
           locationName : '',
-          apiData : ''
+          weatherData : ''
         });
       }
     }
   }
 
-  getForecast = async () => {
-    const forecastUrl = `${process.env.REACT_APP_WEATHER_API}/weather?lat=${this.state.data.lat}&lon=${this.state.data.lon}`;
+  getForecast = async () =>{
+    const forecastUrl = `${process.env.REACT_APP_API}/weather?lat=${this.state.data.lat}&lon=${this.state.data.lon}`;
     const apiData = await axios.get(forecastUrl);
+    // console.log(apiData);
     this.setState({
-      apiData : apiData,
-      display : true,
-      isError : false,
-      errorType : 0
+      weatherData : apiData
     });
     // console.log(apiData.data);
   }
 
-  updateLocation = (e) => {
+  getMovies = async () =>{
+    const moviesUrl = `${process.env.REACT_APP_API}/movies?query=${this.state.locationName}`;
+    const apiData = await axios.get(moviesUrl);
+    console.log(apiData);
+    this.setState({
+      moviesData : apiData,
+      display : true,
+      isError : false,
+      errorType : 0
+    });
+  }
+
+  updateLocation = (e) =>{
     // console.log(e.target.value);
     if(e.target.value){
       this.setState({
@@ -123,11 +137,18 @@ class Main extends React.Component {
             name={this.state.data.display_name}
           />}
 
-        {this.state.apiData&&
+        {this.state.weatherData&&
         <Forecast
-          apiData={this.state.apiData.data}
+          apiData={this.state.weatherData.data}
           name={this.state.data.display_name}
         />}
+
+        {this.state.moviesData&&
+        <Movies
+          apiData={this.state.moviesData.data}
+          name={this.state.data.display_name}
+        />
+        }
       </main>
     );
   }
