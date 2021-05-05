@@ -14,6 +14,8 @@ This is an application that uses an `API` to display a location of users choice.
 1. identify the parts in the API URL that need to be changed in the `GET API link` to be useful
 1. create functions to change the API parts.
 1. render your app
+1. connect thr front end to NETLIFY.com
+1. connect the Back-End to HEROKU.com
 
 ## Architecture
 - react library

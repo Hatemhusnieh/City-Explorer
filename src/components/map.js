@@ -7,7 +7,7 @@ class Map extends React.Component{
         <div className={'location'}>
           <h3>{this.props.name}</h3>
         </div>
-        <img src={`https://maps.locationiq.com/v3/staticmap?key=pk.6b8cac5a641e7ec82c6416fef296c376&center=${this.props.lat},${this.props.lon}&zoom=11&size=600x400`} alt=''/>
+        <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${this.props.lat},${this.props.lon}&zoom=11&size=600x400`} alt=''/>
       </div>
     );
   }
