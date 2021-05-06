@@ -1,8 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import Form from './Form';
 import Map from './map';
 import Forecast from './Forecast';
 import Errors from './Errors';
@@ -19,7 +18,6 @@ class Main extends React.Component {
       locationName : '',
       weatherData : '',
       moviesData : '',
-      display : false,
       isError : false,
       errorType: 0,
       errorMessage : '',
@@ -36,7 +34,7 @@ class Main extends React.Component {
       this.setState({
         data : req.data[0]
       });
-      // console.log(this.state.locationName);
+
       this.getForecast();
       this.getMovies();
     }catch(error){
@@ -48,7 +46,6 @@ class Main extends React.Component {
           errorType : 2,
           errorName : error.message,
           errorMessage : 'Please Enter a Valid Country/City Name',
-          display : false,
           data : '',
           locationName : '',
           weatherData : ''
@@ -59,7 +56,6 @@ class Main extends React.Component {
           errorType : 1,
           errorName : error.message,
           errorMessage : 'Please Enter a Country/City before Exploring',
-          display : false,
           data : '',
           locationName : '',
           weatherData : ''
@@ -75,7 +71,6 @@ class Main extends React.Component {
     this.setState({
       weatherData : apiData
     });
-    // console.log(apiData.data);
   }
 
   getMovies = async () =>{
@@ -84,7 +79,6 @@ class Main extends React.Component {
     console.log(apiData);
     this.setState({
       moviesData : apiData,
-      display : true,
       isError : false,
       errorType : 0
     });
@@ -98,12 +92,8 @@ class Main extends React.Component {
       });
     }else{
       this.setState({
-        // errorType : 1,
         isError : true,
-        // data : '',
-        // apiData : '',
-        locationName : '',
-        // display : false
+        locationName : ''
       });
     }
   }
@@ -112,17 +102,10 @@ class Main extends React.Component {
   render() {
     return (
       <main>
-        <div className={'search-bar'}>
-          <Form onSubmit = {this.getLocation}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Control onChange={this.updateLocation} type="text" placeholder="Enter a Location" />
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-            Explore
-            </Button>
-          </Form>
-        </div>
+        <Form
+          getLocation={this.getLocation}
+          updateLocation={this.updateLocation}
+        />
 
         {this.state.isError&&
           <Errors
@@ -130,7 +113,7 @@ class Main extends React.Component {
             errorMessage={this.state.errorMessage}
           />
         }
-        {this.state.display&&
+        {this.state.data&&
           <Map
             lon={this.state.data.lon}
             lat={this.state.data.lat}
