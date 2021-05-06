@@ -58,12 +58,12 @@ header h1{
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Girassol&display=swap');
-.movie-container h3{
+.movie-section h3{
   text-align: center;
   font-family: 'Girassol', cursive;
   color: #7979f7;
 }
-.movie-card{
+.movie-container{
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
