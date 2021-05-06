@@ -1,11 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import Form from './Form';
-import Map from './map';
-import Forecast from './Forecast';
-import Errors from './Errors';
-import Movies from './Movies';
+import Form from './components/Form';
+import Map from './components/map';
+import Forecast from './components/Forecast/Forecast';
+import Errors from './components/Errors';
+import Movies from './components/Movies/Movies';
 
 
 class Main extends React.Component {
@@ -23,6 +23,21 @@ class Main extends React.Component {
       errorMessage : '',
       errorName : ''
     };
+  }
+
+  updateLocation = (e) =>{
+
+    // console.log(e.target.value);
+    if(e.target.value){
+      this.setState({
+        locationName : e.target.value
+      });
+    }else{
+      this.setState({
+        isError : true,
+        locationName : ''
+      });
+    }
   }
 
   getLocation = async (e) =>{
@@ -76,26 +91,12 @@ class Main extends React.Component {
   getMovies = async () =>{
     const moviesUrl = `${process.env.REACT_APP_API}/movies?query=${this.state.locationName}`;
     const apiData = await axios.get(moviesUrl);
-    console.log(apiData);
+    // console.log(apiData);
     this.setState({
       moviesData : apiData,
       isError : false,
       errorType : 0
     });
-  }
-
-  updateLocation = (e) =>{
-    // console.log(e.target.value);
-    if(e.target.value){
-      this.setState({
-        locationName : e.target.value
-      });
-    }else{
-      this.setState({
-        isError : true,
-        locationName : ''
-      });
-    }
   }
 
 
