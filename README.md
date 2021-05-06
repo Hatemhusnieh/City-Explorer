@@ -1,7 +1,7 @@
 # City Explorer
 
 **Author**: Hatem Ghazi Husnieh
-**Version**: 1.2.0
+**Version**: 1.2.1
 
 ## Overview
 This is an application that uses an `API` to display a location of users choice. and shows the forecast of the location for the next 20 days. Also, now it has the ability to offer a collection od movies related to the city that been explored.
@@ -16,6 +16,7 @@ This is an application that uses an `API` to display a location of users choice.
 1. render your app
 1. connect thr front end to NETLIFY.com
 1. connect the Back-End to HEROKU.com
+1. refactor the code and get rid of any unnecessary states, if-statements and variables. 
 
 ## Architecture
 - react library
@@ -52,9 +53,9 @@ Name of feature: **Asynchronous code, and APIs**
 
 Estimate of time needed to complete: 4 hours
 
-Start time: 9:00 pm
+Start time: 9:00pm
 
-Finish time: 12:00 am
+Finish time: 12:00am
 
 Actual time needed to complete: 3 hours  
 
@@ -65,7 +66,7 @@ Estimate of time needed to complete: 5 hours
 
 Start time: 3:00pm
 
-Finish time: 9:00pm hours
+Finish time: 9:00pm 
 
 Actual time needed to complete: 6 hours
 
@@ -75,6 +76,16 @@ Estimate of time needed to complete: 4 hours
 
 Start time: 4:00pm
 
-Finish time: 12:00pm hours
+Finish time: 12:00pm 
 
 Actual time needed to complete: 4 hours
+
+Name of feature: **Refactoring into Modules**
+
+Estimate of time needed to complete: 3 hours
+
+Start time: 1:30:am
+
+Finish time: 3:00am 
+
+Actual time needed to complete: 1 hour and 30 minutes
