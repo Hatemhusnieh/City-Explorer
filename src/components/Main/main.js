@@ -18,6 +18,7 @@ class Main extends React.Component {
       locationName : '',
       weatherData : '',
       moviesData : '',
+      restaurantsData: '',
       isError : false,
       errorType: 0,
       errorMessage : '',
@@ -43,15 +44,21 @@ class Main extends React.Component {
   getLocation = async (e) =>{
     e.preventDefault();
     try {
-      const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.locationName}&format=json`;
-      const req = await axios.get(url);
-
+      const url = `https://us1.locationiq.com/v1/search.php`;
+      const params = {
+        key: process.env.REACT_APP_LOCATION_KEY,
+        q: this.state.locationName,
+        format: 'json'
+      };
+      const req = await axios.get(url, {params});
+      // console.log(req.data);
       this.setState({
         data : req.data[0]
       });
 
       this.getForecast();
       this.getMovies();
+      // this.getRestaurants();
     }catch(error){
       console.clear();
       // console.log(error.message);
@@ -80,8 +87,12 @@ class Main extends React.Component {
   }
 
   getForecast = async () =>{
-    const forecastUrl = `${process.env.REACT_APP_API}/weather?lat=${this.state.data.lat}&lon=${this.state.data.lon}`;
-    const apiData = await axios.get(forecastUrl);
+    const forecastUrl = `${process.env.REACT_APP_API}/weather`;
+    const params = {
+      lat: this.state.data.lat,
+      lon: this.state.data.lon
+    };
+    const apiData = await axios.get(forecastUrl, {params});
     // console.log(apiData);
     this.setState({
       weatherData : apiData
@@ -89,8 +100,11 @@ class Main extends React.Component {
   }
 
   getMovies = async () =>{
-    const moviesUrl = `${process.env.REACT_APP_API}/movies?query=${this.state.locationName}`;
-    const apiData = await axios.get(moviesUrl);
+    const moviesUrl = `${process.env.REACT_APP_API}/movies`;
+    const params = {
+      query: this.state.locationName
+    };
+    const apiData = await axios.get(moviesUrl, {params});
     // console.log(apiData);
     this.setState({
       moviesData : apiData,
@@ -99,6 +113,20 @@ class Main extends React.Component {
     });
   }
 
+  getRestaurants = async ()=>{
+    const restaurantsUrl = `${process.env.REACT_APP_API}/restaurants?term=term&location=${this.state.locationName}`;
+    const apiData = await axios.get(restaurantsUrl,{
+      headers: {
+        'Authorization': `Bearer ${process.env.REACT_APP_TOKEN}`
+      }
+    });
+    console.log(apiData);
+    this.setState({
+      restaurantsData : apiData,
+      isError : false,
+      errorType : 0
+    });
+  }
 
   render() {
     return (
