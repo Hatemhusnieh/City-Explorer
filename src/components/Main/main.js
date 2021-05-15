@@ -6,6 +6,7 @@ import Map from './components/map';
 import Forecast from './components/Forecast/Forecast';
 import Errors from './components/Errors';
 import Movies from './components/Movies/Movies';
+import Restaurants from './components/Restaurants/Restaurants';
 
 
 class Main extends React.Component {
@@ -58,7 +59,8 @@ class Main extends React.Component {
 
       this.getForecast();
       this.getMovies();
-      // this.getRestaurants();
+      this.getRestaurants();
+
     }catch(error){
       console.clear();
       // console.log(error.message);
@@ -105,27 +107,23 @@ class Main extends React.Component {
       query: this.state.locationName
     };
     const apiData = await axios.get(moviesUrl, {params});
-    // console.log(apiData);
     this.setState({
       moviesData : apiData,
       isError : false,
       errorType : 0
     });
+    // console.log(this.state.moviesData.data.length);
   }
 
   getRestaurants = async ()=>{
-    const restaurantsUrl = `${process.env.REACT_APP_API}/restaurants?term=term&location=${this.state.locationName}`;
-    const apiData = await axios.get(restaurantsUrl,{
-      headers: {
-        'Authorization': `Bearer ${process.env.REACT_APP_TOKEN}`
-      }
-    });
-    console.log(apiData);
+    const restaurantsUrl = `${process.env.REACT_APP_API}/restaurants?term=restaurants&location=${this.state.locationName}`;
+    const apiData = await axios.get(restaurantsUrl);
     this.setState({
       restaurantsData : apiData,
       isError : false,
       errorType : 0
     });
+    // console.log(this.state.restaurantsData);
   }
 
   render() {
@@ -160,6 +158,13 @@ class Main extends React.Component {
           apiData={this.state.moviesData.data}
           name={this.state.data.display_name}
         />
+        }
+
+        {this.state.restaurantsData&&
+          <Restaurants
+            apiData={this.state.restaurantsData}
+            name={this.state.data.display_name}
+          />
         }
       </main>
     );

@@ -74,4 +74,19 @@ header h1{
   width: 100%;
   height: 350px;;
 }
+
+.restaurants-section h3{
+  text-align: center;
+  font-family: 'Girassol', cursive;
+  color: #7979f7;
+}
+.restaurants-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 10px 0px;
+}
+..restaurant-container{
+  
+}
 /* /////////////////////////////////// */
