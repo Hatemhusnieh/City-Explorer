@@ -11,38 +11,38 @@ import Restaurants from './components/Restaurants/Restaurants';
 
 class Main extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
-      data : '',
-      locationName : '',
-      weatherData : '',
-      moviesData : '',
+      data: '',
+      locationName: '',
+      weatherData: '',
+      moviesData: '',
       restaurantsData: '',
-      isError : false,
+      isError: false,
       errorType: 0,
-      errorMessage : '',
-      errorName : ''
+      errorMessage: '',
+      errorName: ''
     };
   }
 
-  updateLocation = (e) =>{
+  updateLocation = (e) => {
 
     // console.log(e.target.value);
-    if(e.target.value){
+    if (e.target.value) {
       this.setState({
-        locationName : e.target.value
+        locationName: e.target.value
       });
-    }else{
+    } else {
       this.setState({
-        isError : true,
-        locationName : ''
+        isError: true,
+        locationName: ''
       });
     }
-  }
+  };
 
-  getLocation = async (e) =>{
+  getLocation = async (e) => {
     e.preventDefault();
     try {
       const url = `https://us1.locationiq.com/v1/search.php`;
@@ -51,80 +51,80 @@ class Main extends React.Component {
         q: this.state.locationName,
         format: 'json'
       };
-      const req = await axios.get(url, {params});
+      const req = await axios.get(url, { params });
       // console.log(req.data);
       this.setState({
-        data : req.data[0]
+        data: req.data[0]
       });
 
       this.getForecast();
       this.getMovies();
       this.getRestaurants();
 
-    }catch(error){
+    } catch (error) {
       console.clear();
       // console.log(error.message);
-      if(this.state.locationName){
+      if (this.state.locationName) {
         this.setState({
-          isError : true,
-          errorType : 2,
-          errorName : error.message,
-          errorMessage : 'Please Enter a Valid Country/City Name',
-          data : '',
-          locationName : '',
-          weatherData : ''
+          isError: true,
+          errorType: 2,
+          errorName: error.message,
+          errorMessage: 'Please Enter a Valid Country/City Name',
+          data: '',
+          locationName: '',
+          weatherData: ''
         });
-      }else{
+      } else {
         this.setState({
-          isError : true,
-          errorType : 1,
-          errorName : error.message,
-          errorMessage : 'Please Enter a Country/City before Exploring',
-          data : '',
-          locationName : '',
-          weatherData : ''
+          isError: true,
+          errorType: 1,
+          errorName: error.message,
+          errorMessage: 'Please Enter a Country/City before Exploring',
+          data: '',
+          locationName: '',
+          weatherData: ''
         });
       }
     }
-  }
+  };
 
-  getForecast = async () =>{
+  getForecast = async () => {
     const forecastUrl = `${process.env.REACT_APP_API}/weather`;
     const params = {
       lat: this.state.data.lat,
       lon: this.state.data.lon
     };
-    const apiData = await axios.get(forecastUrl, {params});
+    const apiData = await axios.get(forecastUrl, { params });
     // console.log(apiData);
     this.setState({
-      weatherData : apiData
+      weatherData: apiData
     });
-  }
+  };
 
-  getMovies = async () =>{
+  getMovies = async () => {
     const moviesUrl = `${process.env.REACT_APP_API}/movies`;
     const params = {
       query: this.state.locationName
     };
-    const apiData = await axios.get(moviesUrl, {params});
+    const apiData = await axios.get(moviesUrl, { params });
     this.setState({
-      moviesData : apiData,
-      isError : false,
-      errorType : 0
+      moviesData: apiData,
+      isError: false,
+      errorType: 0
     });
     // console.log(this.state.moviesData.data.length);
-  }
+  };
 
-  getRestaurants = async ()=>{
+  getRestaurants = async () => {
     const restaurantsUrl = `${process.env.REACT_APP_API}/restaurants?term=restaurants&location=${this.state.locationName}`;
     const apiData = await axios.get(restaurantsUrl);
     this.setState({
-      restaurantsData : apiData,
-      isError : false,
-      errorType : 0
+      restaurantsData: apiData,
+      isError: false,
+      errorType: 0
     });
     // console.log(this.state.restaurantsData);
-  }
+  };
 
   render() {
     return (
@@ -134,33 +134,33 @@ class Main extends React.Component {
           updateLocation={this.updateLocation}
         />
 
-        {this.state.isError&&
+        {this.state.isError &&
           <Errors
             errorName={this.state.errorName}
             errorMessage={this.state.errorMessage}
           />
         }
-        {this.state.data&&
+        {this.state.data &&
           <Map
             lon={this.state.data.lon}
             lat={this.state.data.lat}
             name={this.state.data.display_name}
           />}
 
-        {this.state.weatherData&&
-        <Forecast
-          apiData={this.state.weatherData.data}
-          name={this.state.data.display_name}
-        />}
+        {this.state.weatherData &&
+          <Forecast
+            apiData={this.state.weatherData.data}
+            name={this.state.data.display_name}
+          />}
 
-        {this.state.moviesData&&
-        <Movies
-          apiData={this.state.moviesData.data}
-          name={this.state.data.display_name}
-        />
+        {this.state.moviesData &&
+          <Movies
+            apiData={this.state.moviesData.data}
+            name={this.state.data.display_name}
+          />
         }
 
-        {this.state.restaurantsData&&
+        {this.state.restaurantsData &&
           <Restaurants
             apiData={this.state.restaurantsData}
             name={this.state.data.display_name}
